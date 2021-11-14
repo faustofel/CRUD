@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>USERS WEB INTERFACE!</title>
+    </head>
+    <body>
+        <h1>EDIT:</h1>
+        <table border="1" th:object="${adduser}">
+            <tr>
+                <th colspan="2"></th>
+                <th>NAME</th>
+                <th>LASTNAME</th>
+                <th>AGE</th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>ID:</th>
+                <th th:utext="${adduser.id}">ID</th>
+                <th th:utext="${adduser.name}">NAME</th>
+                <th th:utext="${adduser.lastname}">LASTNAME</th>
+                <th th:utext="${adduser.age}">AGE</th>
+                <th></th>
+            </tr>
+            <tr>
+                <form th:method="PATCH" th:action="@{/users}">
+                    <input type="hidden" th:field="*{id}" id="id"/>
+                    <td colspan="2" align="right">EDIT USER:</td>
+                    <td><input type="text" th:field="*{name}"/></td>
+                    <td><input type="text" th:field="*{lastname}"/></td>
+                    <td><input type="number" max="120" min="0" step="1" size="3" th:field="*{age}"/></td>
+                    <td align="center"><input type="submit" value="EDIT USER"/></td>
+                </form>
+            </tr>
+        </table>
+    </body>
+</html>
